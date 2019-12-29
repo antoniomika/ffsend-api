@@ -224,6 +224,7 @@ where
 
 /// The decoded and decrypted metadata response, holding all the properties.
 /// This response object is returned from this action.
+#[derive(Clone)]
 pub struct MetadataResponse {
     /// The actual metadata.
     metadata: MetadataData,

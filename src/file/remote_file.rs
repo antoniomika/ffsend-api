@@ -26,7 +26,7 @@ const SHARE_FRAGMENT_PATTERN: &str = r"^([a-zA-Z0-9-_+/]+)?\s*$";
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct RemoteFile {
     /// The ID of the file on that server.
-    id: String,
+    pub id: String,
 
     /// The time the file was uploaded at, if known.
     upload_at: Option<DateTime<Utc>>,
@@ -44,7 +44,7 @@ pub struct RemoteFile {
     url: Url,
 
     /// The secret key that is required to download the file.
-    secret: Vec<u8>,
+    pub secret: Vec<u8>,
 
     /// The owner key, that can be used to manage the file on the server.
     owner_token: Option<String>,

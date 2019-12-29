@@ -37,7 +37,7 @@ pub struct Download<'a> {
     target: PathBuf,
 
     /// An optional password to decrypt a protected file.
-    password: Option<String>,
+    pub password: Option<String>,
 
     /// Check whether the file exists (recommended).
     check_exists: bool,
@@ -154,7 +154,7 @@ impl<'a> Download<'a> {
     ///
     /// The response representing the file reader is returned along with the
     /// length of the reader content.
-    fn create_file_reader(
+    pub fn create_file_reader(
         &self,
         key: &KeySet,
         metadata: &MetadataResponse,

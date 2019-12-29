@@ -354,7 +354,7 @@ impl Upload {
 
     /// Upload the file to the server, used in Firefox Send v3.
     #[cfg(feature = "send3")]
-    fn upload_send3(
+    pub fn upload_send3(
         &self,
         client: &Client,
         key: &KeySet,
@@ -522,16 +522,16 @@ impl UploadStatusResponse {
 
 /// A struct that holds various file properties, such as it's name and it's
 /// mime type.
-struct FileData<'a> {
+pub struct FileData<'a> {
     /// The file name.
-    name: &'a str,
+    pub name: &'a str,
 
     /// The file mime type.
-    mime: Mime,
+    pub mime: Mime,
 
     /// The file size.
     #[allow(unused)]
-    size: u64,
+    pub size: u64,
 }
 
 impl<'a> FileData<'a> {
@@ -576,7 +576,7 @@ impl<'a> FileData<'a> {
 }
 
 /// A wrapped reader to make it easier to pass around.
-struct Reader {
+pub struct Reader {
     // TODO: use better type
     inner: Box<dyn ReadLen>,
 }

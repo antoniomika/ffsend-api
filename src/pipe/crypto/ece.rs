@@ -569,8 +569,10 @@ impl Read for EceReader {
             // Break if:
             // - no new data was read
             // - buffer doesn't have enough data to crypt, while there's data left to read
-            if read == 0 || (read != capacity && !self.crypt.is_last_with(read)) {
+            if read == 0 && self.crypt.is_last_with(read) {
                 return Ok(total);
+            } else if read != 0 && read != capacity && !self.crypt.is_last_with(read) {
+                return self.read(buf).map(|n| n + total);
             }
         }
 

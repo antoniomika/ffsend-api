@@ -7,7 +7,7 @@ use crate::crypto::b64;
 const MIME_TAR: &str = "application/x-tar";
 
 /// File metadata, which is send to the server.
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(untagged)]
 pub enum Metadata {
     /// Metadata using in Send v2.
@@ -129,7 +129,7 @@ impl Metadata {
 }
 
 /// Metadata manifest, used in Send v3.
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Manifest {
     /// Files part of a share.
     files: Vec<ManifestFile>,
@@ -148,7 +148,7 @@ impl Manifest {
 }
 
 /// Metadata manifest file, used in Send v3.
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct ManifestFile {
     /// The file name.
     name: String,
